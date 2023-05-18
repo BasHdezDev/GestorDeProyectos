@@ -64,15 +64,49 @@ class Usuario:
 
 
 class Equipo:
-    def __init__(self, nombre: str, id: int, descripcion: str, miembros: int):
+    def __init__(self, nombre: str, id: str, descripcion: str):
         self.nombre: str = nombre
-        self.id: int = id
+        self.id: str = id
         self.descripcion: str = descripcion
-        self.miembros: int = miembros
+        self.miembros = []
 
 
-    def asignar_usuario(self) -> bool:
-        pass
+    def registrar_equipo(self):
+        equipos = {"nombre": "",
+                    "id": "",
+                    "contrasena": "",
+                    "email": "",
+                    "cargo": ""}
+
+        with open("usuarios.json", "r", encoding="utf-8") as archivo:
+            datos = json.load(archivo)
+
+            for equipo in datos:
+                if equipo["id"] == self.id:
+                    raise Exception
+
+            equipos["nombre"] = self.nombre
+            equipos["id"] = self.id
+            equipos["descripcion"] = self.descripcion
+            equipos["miembros"] = self.miembros
+            datos.append(equipos)
+
+        with open("usuarios.json", "w", encoding="utf-8") as archivo:
+            json.dump(datos, archivo, indent=1)
+
+
+    def asignar_usuario(self, id):
+        with open("usuarios.json", "r", encoding="utf-8") as archivo:
+            datos = json.load(archivo)
+
+            for usuario in datos:
+                if usuario["numero_id"] == id:
+                    self.miembros.append(usuario["numero_id"])
+                else:
+                    print("El usuario ya pertenece a un equipo o no existe el id")
+
+
+
 
     def asignar_tarea(self) -> bool:
         pass
@@ -103,7 +137,7 @@ class Tarea:
 x = Usuario("Jameson", "152", "brainmaster", "bahsbahd@gmail.com", "TechLead")
 
 while True:
-    decision = input("1) registrar usuario 2) Iniciar s 3)B")
+    decision = input("1) registrar usuario 2) Iniciar s 3)B 4)Crear equipo")
     if decision == "1":
         nombre = input("Ingrese el nombre")
         numero_id = input("Ingrese el id")
@@ -113,21 +147,30 @@ while True:
         registrar_usuario(nombre, numero_id, contrasena, correo, cargo)
 
     elif decision == "2":
-        id = input("Ingrese su id")
-        contrasena = input("Ingrese la contraseña")
+        id = input("Ingrese su id ")
+        contrasena = input("Ingrese la contraseña ")
         iniciar_sesion(id, contrasena)
          
     elif decision == "3":
-        id = input("Ingrese un id pa buscarlo pa")
+        id = input("Ingrese un id pa buscarlo pa ")
         if buscar_usuario(id):
-            print("El usuario ya existe")
+            print("El usuario ya existe ")
         else:
-            nombre = input("Ingrese el nombre")
-            numero_id = input("Ingrese el id")
-            contrasena = input("Ingrese la contrasena")
-            correo = input("Ingrese el correo")
-            cargo = input("Ingrese el cargo")
+            nombre = input("Ingrese el nombre ")
+            numero_id = input("Ingrese el id ")
+            contrasena = input("Ingrese la contrasena ")
+            correo = input("Ingrese el correo ")
+            cargo = input("Ingrese el cargo ")
             registrar_usuario(nombre, numero_id, contrasena, correo, cargo)
+    elif decision == "4":
+        nombre = input("Ingrese el nombre del equipo ")
+        id = input("Ingrese el id del equipo ")
+        descripcion = input("Ingrese una descripcion del equipo ")
+
+        Equipo.registrar_equipo(Equipo(nombre, id, descripcion))
+
+
+
 
 
 
