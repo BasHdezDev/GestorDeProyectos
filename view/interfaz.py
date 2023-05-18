@@ -1,6 +1,6 @@
 import tkinter
 
-import pygubu
+import tkdesigner
 
 ventana = tkinter.Tk()
 ventana.geometry("600x600")
