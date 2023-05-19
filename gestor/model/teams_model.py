@@ -4,3 +4,4 @@ class Equipo:
         self.id: str = id
         self.descripcion: str = descripcion
         self.miembros = []
+

@@ -9,7 +9,7 @@ def registrar_usuario(nombre, numero_id, contrasena, email, cargo):
                 "email": "",
                 "cargo": ""}
 
-    with open("usuarios.json", "r", encoding="utf-8") as archivo:
+    with open(r"C:\Users\Bas\PycharmProjects\GestorDeProyectos\gestor\resources\usuarios.json", "r", encoding="utf-8") as archivo:
         datos = json.load(archivo)
 
         for usuario in datos:
@@ -23,11 +23,11 @@ def registrar_usuario(nombre, numero_id, contrasena, email, cargo):
         usuarios["cargo"] = cargo
         datos.append(usuarios)
 
-    with open("usuarios.json", "w", encoding="utf-8") as archivo:
+    with open(r"C:\Users\Bas\PycharmProjects\GestorDeProyectos\gestor\resources\usuarios.json", "w", encoding="utf-8") as archivo:
         json.dump(datos, archivo, indent=1)
 
 
-def buscar_usuario(numero_id: str) -> bool:
+def buscar_usuario(numero_id: str):
 
     try:
         with open("usuarios.json", "r", encoding="utf-8") as archivo:
@@ -42,3 +42,4 @@ def buscar_usuario(numero_id: str) -> bool:
         print("El archivo usuarios.json no se encontró.")
     except Exception as e:
         print(f"Error no esperado: {str(e)}")
+

@@ -5,3 +5,4 @@ class Usuario:
         self.contrasena: str = contrasena
         self.email: str = email
         self.cargo: str = cargo
+

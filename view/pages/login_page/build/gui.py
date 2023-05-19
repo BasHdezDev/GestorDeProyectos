@@ -9,6 +9,7 @@ from pathlib import Path
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
+from view.pages.home_page.build.gui import ejecutar_script
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\Bas\PycharmProjects\GestorDeProyectos\view\pages\login_page\build\assets\frame0")
@@ -73,7 +74,7 @@ button_2 = Button(
     image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_2 clicked"),
+    command=lambda: ejecutar_script(r'C:\Users\Bas\PycharmProjects\GestorDeProyectos\view\pages\team_page\build\gui.py'),
     relief="flat"
 )
 button_2.place(
