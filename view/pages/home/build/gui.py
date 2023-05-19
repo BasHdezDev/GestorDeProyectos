@@ -11,25 +11,20 @@ from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
 
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\Bas\PycharmProjects\GestorDeProyectos\view\build\assets\frame0")
+ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\Bas\PycharmProjects\GestorDeProyectos\view\pages\home\build\assets\frame0")
 
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
+
+def ejecutar_script(ruta):
+    subprocess.call(["python", ruta])
 
 
 window = Tk()
 
 window.geometry("716x427")
 window.configure(bg = "#FFFFFF")
-
-def ejecutar_script(ruta):
-    subprocess.call(["python", ruta])
-
-
-
-def user_registrado():
-    print("Registrado!")
 
 
 canvas = Canvas(
@@ -43,12 +38,20 @@ canvas = Canvas(
 )
 
 canvas.place(x = 0, y = 0)
+image_image_1 = PhotoImage(
+    file=relative_to_assets("image_1.png"))
+image_1 = canvas.create_image(
+    162.0,
+    213.0,
+    image=image_image_1
+)
+
 canvas.create_rectangle(
     278.0,
     0.0,
     716.0,
     427.0,
-    fill="#62E5B6",
+    fill="#35B347",
     outline="")
 
 canvas.create_text(
@@ -144,7 +147,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: user_registrado(),
+    command=lambda: print("button_1 clicked"),
     relief="flat"
 )
 button_1.place(
@@ -155,20 +158,12 @@ button_1.place(
 )
 
 canvas.create_text(
-    46.0,
+    56.0,
     165.0,
     anchor="nw",
     text="GestorApp",
-    fill="#63E6B7",
+    fill="#35B347",
     font=("Inconsolata ExtraBold", 39 * -1)
-)
-
-image_image_1 = PhotoImage(
-    file=relative_to_assets("image_1.png"))
-image_1 = canvas.create_image(
-    145.0,
-    86.0,
-    image=image_image_1
 )
 
 canvas.create_text(
@@ -181,7 +176,7 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    1.0,
+    34.0,
     257.0,
     anchor="nw",
     text="Bienvenid@!",
@@ -224,7 +219,7 @@ button_2 = Button(
     image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: ejecutar_script(r'C:\Users\Bas\PycharmProjects\GestorDeProyectos\view\build\inicio_sesion\build\gui.py'),
+    command=lambda: ejecutar_script(r'C:\Users\Bas\PycharmProjects\GestorDeProyectos\view\pages\registration\build\gui.py'),
     relief="flat"
 )
 button_2.place(
@@ -232,6 +227,14 @@ button_2.place(
     y=332.0,
     width=199.0,
     height=51.0
+)
+
+image_image_2 = PhotoImage(
+    file=relative_to_assets("image_2.png"))
+image_2 = canvas.create_image(
+    133.0,
+    83.0,
+    image=image_image_2
 )
 window.resizable(False, False)
 window.mainloop()

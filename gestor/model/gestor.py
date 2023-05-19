@@ -137,7 +137,7 @@ class Tarea:
 x = Usuario("Jameson", "152", "brainmaster", "bahsbahd@gmail.com", "TechLead")
 
 while True:
-    decision = input("1) registrar usuario 2) Iniciar s 3)B 4)Crear equipo")
+    decision = input("1) registrar usuario\n2) Iniciar sesion\n3)B \n4)Crear equipo\n")
     if decision == "1":
         nombre = input("Ingrese el nombre")
         numero_id = input("Ingrese el id")

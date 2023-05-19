@@ -11,7 +11,7 @@ from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
 
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\Bas\PycharmProjects\GestorDeProyectos\view\build\inicio_sesion\build\assets\frame0")
+ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\Bas\PycharmProjects\GestorDeProyectos\view\pages\registration\build\assets\frame0")
 
 
 def relative_to_assets(path: str) -> Path:
@@ -46,9 +46,9 @@ image_1 = canvas.create_image(
 canvas.create_rectangle(
     316.0,
     0.0,
-    727.0,
+    741.0,
     427.0,
-    fill="#63E6B7",
+    fill="#35B347",
     outline="")
 
 button_image_1 = PhotoImage(
@@ -148,6 +148,14 @@ entry_2.place(
     y=147.0,
     width=256.0,
     height=38.0
+)
+
+image_image_2 = PhotoImage(
+    file=relative_to_assets("image_2.png"))
+image_2 = canvas.create_image(
+    145.0,
+    380.0,
+    image=image_image_2
 )
 window.resizable(False, False)
 window.mainloop()
